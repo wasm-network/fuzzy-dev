@@ -1,0 +1,12 @@
+## Local .tm_properties for Hugo
+## https://macromates.com/textmate/manual/projects#filtering-files
+
+myFolderExcludes = "docs,resources"
+myExcludedFileTypes = {*.{png,jpg,jpeg,gif}}
+excludeInFileChooser  = "{$excludeInFileChooser,$myFolderExcludes}" 
+excludeInFolderSearch = "{$excludeInFolderSearch,$myFolderExcludes}" 
+excludeDirectoriesInBrowser = "{$excludeDirectoriesInBrowser,$myFolderExcludes}" 
+excludeFilesInBrowser = "{$excludeFilesInBrowser,$myExcludedFileTypes}"  
+fileBrowserGlob  = "{*,.tm_properties,.htaccess}"
+
+

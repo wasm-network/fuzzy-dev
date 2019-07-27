@@ -1,0 +1,50 @@
+baseURL= "/"
+publishDir = "docs"
+languageCode= "en"
+title= "Fuzzy Dice"
+paginate = 5
+copyright = "All rights reserved - 2019"
+theme = "devfest-theme-hugo"
+disableKinds = ["taxonomy", "taxonomyTerm"]
+ignoreFiles = [ "\\.foo$", "\\.boo$" ]
+sectionPagesMenu = "main"
+
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = [":git", "lastmod", "date", "publishDate"]
+publishDate = ["publishDate", "date"]
+expiryDate = ["expiryDate"]
+
+[blackfriday]
+  angledQuotes = true
+  hrefTargetBlank = true
+
+[params]
+  description = "Fuzzy Dice website"
+  metadescription = ""
+  cover = ""
+  author = "Management"
+  authorlocation = "Toronto, CA"
+  authorwebsite = ""
+  authorbio= ""
+  logo = ""
+  hjsStyle = "default"
+  paginatedsections = ["posts"]
+  google_analytics_id=""
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 1
+[[menu.main]]
+identifier = "community"
+name = "Community"
+url = "/community/"
+weight = 2
+
+[[menu.main]]
+identifier = "contact"
+name = "Contact"
+url = "/contact/"
+weight = 3
