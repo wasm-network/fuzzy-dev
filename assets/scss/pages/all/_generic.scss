@@ -1,0 +1,40 @@
+.generic {
+	.display-4 {
+	  font-size: 2.4rem;	
+		font-family: $font-family-heading;
+	}
+	.strip {
+			background-image: linear-gradient(to right, #a5e2b2, #92d8aa, #7ecfa3, #69c59d, #52bb97);		
+	}
+	.card {
+		padding: 40px 0 20px;
+		background-color: transparent;		
+		border: 4px solid #FFF;
+		margin: 0 10px 20px;
+	}	
+	.card-header {
+		background-color: transparent; 
+		border: none;
+		padding: 0.5rem 0.75rem;
+		height: 60px;
+	}
+	.card-body {
+		padding: 0.75rem 1.0rem;
+	}	
+	.card-footer {
+		background-color: transparent; 
+		border: none;
+	}
+	.card-title {
+		font-family: $font-family-heading;
+		font-size: 1.2rem;
+	}
+	
+	h2 {
+	  font-size: 1.8rem;			
+	}
+	p {
+//	  font-size: 1.2rem;			
+	}
+}
+

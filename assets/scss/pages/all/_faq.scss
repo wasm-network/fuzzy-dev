@@ -1,0 +1,25 @@
+.faq {
+	background: transparent;			
+	.ui-accordion-content {
+		min-height: 120px;
+	}
+	.ui-corner-all, .ui-corner-top, .ui-corner-bottom {
+		border-radius: 0px;
+		border: none;
+	}
+	h3 {
+		font-family: $font-family-base;
+	  font-size: 2.0rem;			
+		background: $primary;
+		color: #FFFFFF;
+		line-height: 2.5rem;
+		margin-bottom: 1px;
+		padding: 5px 60px 5px 5px;
+	}
+	p {
+		font-family: $font-family-base;
+		font-size: 1.2rem;
+		margin: 15px;
+	}
+}
+
