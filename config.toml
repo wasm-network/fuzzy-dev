@@ -42,16 +42,16 @@ expiryDate = ["expiryDate"]
     footer = "/images/logos/devfest_gray_text.png"
 
 [[menu.main]]
+identifier = "login"
+name = "Login"
+url = "/login/"
+weight = 1
+
+[[menu.main]]
 identifier = "about"
 name = "About"
 url = "/about/"
-weight = 1
-
-# [[menu.main]]
-# identifier = "community"
-# name = "Community"
-# url = "/community/"
-# weight = 2
+weight = 2
 
 [[menu.main]]
 identifier = "help"

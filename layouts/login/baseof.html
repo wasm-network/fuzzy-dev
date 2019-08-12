@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+    <head>
+        {{ partial "head.html" . }}
+    </head>
+
+    <body class="{{ if ne $.Site.Params.defaultTheme "light" -}} dark-theme {{- end -}}">
+        <div class="container">
+            {{ partial "header.html" . }}
+
+            <div class="content">
+                {{ block "main" . }}{{ end }}
+            </div>
+
+            {{ block "footer" . }}
+                {{ partial "footer.html" . }}
+            {{ end }}
+        </div>
+
+        {{ partial "javascript.html" . }}
+        <script>
+            // const axios = require("axios");
+            const instance = axios.create({
+                baseURL: "http://127.0.0.1:5000/",
+                // baseURL: "https://auth2fa.fuzzydice.workers.dev/",
+                timeout: 1000
+                // headers: {"Access-Control-Allow-Origin": "*",
+                // "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+                // "Access-Control-Allow-Headers": "Authorization",
+                // "Access-Control-Max-Age": "1728000"}
+            });
+            FZD.domLoaded(function() {
+                var date = new Date();
+                var dt = date.toDateString();
+                var time = date.toLocaleTimeString();
+                console.log("DOM Ready: {0} {1}".format(dt, time));
+                instance.get("/create?acct=888888888XXX")
+                    .then(function (response) {
+                        console.log(response.data);
+                        console.log(response.status);
+                        console.log(response.statusText);
+                        console.log(response.headers);
+                        console.log(response.config);
+                });
+            });
+        </script>
+    </body>
+</html>

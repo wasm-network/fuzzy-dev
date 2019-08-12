@@ -1,18 +1,33 @@
 {{ define "main" }}
-    <main aria-role="main">
-        <div>
-            <h1>{{ .Site.Title }}</h1>
+<main aria-role="main">
+    <div>
+        <h1>{{ .Site.Title }}</h1>
 
-            {{- with .Site.Params.homeSubtitle }}
-                <p>{{.}}</p>
-            {{- end }}
+        {{- with .Site.Params.homeSubtitle }}
+        <p>{{.}}</p>
+        {{- end }}
 
-            {{- with .Site.Params.social }}
-                <div>
-                    {{ partial "social-icons.html" . }}
+        <div class="container pt-12 generic">
+            <div class="title-row">
+                <div class="col-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ETH address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We need this to generate your secret key</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
-            {{- end }}
+            </div>
         </div>
-    </main>
-{{ end }}
 
+        {{- with .Site.Params.social }}
+        <div>
+            {{ partial "social-icons.html" . }}
+        </div>
+        {{- end }}
+    </div>
+</main>
+{{ end }}
