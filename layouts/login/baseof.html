@@ -22,13 +22,9 @@
             // const axios = require("axios");
             const instance = axios.create({
                 baseURL: "http://127.0.0.1:5000/",
-                // baseURL: "https://auth2fa.fuzzydice.workers.dev/",
                 timeout: 1000
-                // headers: {"Access-Control-Allow-Origin": "*",
-                // "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-                // "Access-Control-Allow-Headers": "Authorization",
-                // "Access-Control-Max-Age": "1728000"}
             });
+            FZD.Auth.setup();
             FZD.domLoaded(function() {
                 var date = new Date();
                 var dt = date.toDateString();
@@ -42,7 +38,9 @@
                         console.log(response.headers);
                         console.log(response.config);
                 });
+
             });
+
         </script>
     </body>
 </html>

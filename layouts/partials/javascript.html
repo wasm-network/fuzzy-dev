@@ -4,14 +4,18 @@
 {{ $theme := resources.Get "js/theme.js" }}
 {{ $secureJS := slice $main $menu $prism $theme | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.15/bootstrap-native-v4.min.js"></script>
 
-{{ $app := resources.Get "js/app.js" }}
+{{ $app := resources.Get "js/app/app.js" }}
+{{ $auth := resources.Get "js/app/auth.js" }}
 {{ if .Site.IsServer }}
 <script type="text/javascript" src="{{ $app.RelPermalink }}"></script>
+<script type="text/javascript" src="{{ $auth.RelPermalink }}"></script>
 {{ else }}
 <script type="text/javascript" src="{{ ($app | minify | fingerprint).RelPermalink }}"></script>
+<script type="text/javascript" src="{{ ($auth | minify | fingerprint).RelPermalink }}"></script>
 {{ end }}
 
 {{- if .Site.GoogleAnalytics }}
