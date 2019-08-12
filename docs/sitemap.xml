@@ -3,8 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/about/faq/</loc>
+  </url>
+  
+  <url>
+    <loc>/about/contact/</loc>
+  </url>
+  
+  <url>
     <loc>/</loc>
-    <priority>0</priority>
+    <lastmod>2019-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2018-12-06T09:29:16+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/help/</loc>
+    <lastmod>2018-12-06T09:29:16+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/login/</loc>
+    <lastmod>2018-02-10T10:52:03+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/404/</loc>
+    <lastmod>2018-02-10T10:52:03+07:00</lastmod>
   </url>
   
 </urlset>

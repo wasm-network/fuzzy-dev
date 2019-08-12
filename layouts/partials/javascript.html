@@ -6,6 +6,13 @@
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+{{ $app := resources.Get "js/app.js" }}
+{{ if .Site.IsServer }}
+<script type="text/javascript" src="{{ $app.RelPermalink }}"></script>
+{{ else }}
+<script type="text/javascript" src="{{ ($app | minify | fingerprint).RelPermalink }}"></script>
+{{ end }}
+
 {{- if .Site.GoogleAnalytics }}
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
