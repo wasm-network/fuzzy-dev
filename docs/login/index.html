@@ -23,10 +23,12 @@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
     type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 
-<link rel="stylesheet" href="/main.min.0d47b4686e972122bd29f0c1e3dd024a2d541cd8b1b543622520822ea6f4238a.css">
+<link rel="stylesheet" href="/main.min.7afd6fac5aac298375797793ceb086b1493807a49ed8cda18f315031f35cfa03.css">
 
 
 
@@ -76,6 +78,7 @@
             
                 <nav class="menu">
     <ul class="menu__inner">
+        <li><a href="/login/">Login</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/help/">Help</a></li>
     </ul>
@@ -102,11 +105,27 @@
 
             <div class="content">
                 
-    <main aria-role="main">
-        <div>
-            <h1>Fuzzy Dice</h1>
+<main aria-role="main">
+    <div>
+        <h1>Fuzzy Dice</h1>
+
+        <div class="container pt-12 generic">
+            <div class="title-row">
+                <div class="col-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="Address">ETH address</label>
+                            <input type="address" class="form-control" id="ethAddress"
+                                aria-describedby="helpText" placeholder="Enter your ETH address">
+                            <small id="helpText" class="form-text text-muted">We need this to generate your secret key</small>
+                        </div>
+                        <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </main>
+    </div>
+</main>
 
             </div>
 
@@ -141,34 +160,32 @@
 
 
 
-
 <script type="text/javascript" src="/bundle.min.4c3fb12a087ceed4a52cb5d57068a9795c7069617a01ca70f788052ad66e1791779e6c72686e1dc0ca13dc03b0203204b6566bb0dd1ee80de2b7ff4d8fe53db2.js" integrity="sha512-TD&#43;xKgh87tSlLLXVcGipeVxwaWF6Acpw94gFKtZuF5F3nmxyaG4dwMoT3AOwIDIEtlZrsN0e6A3it/9Nj&#43;U9sg=="></script>
+
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.15/bootstrap-native-v4.min.js"></script>
+
+
+
+
+<script type="text/javascript" src="/js/app/app.min.172215f0d7caf602332f572bc0e7a02f7536417a8232956fd1fbc466bd5a689d.js"></script>
+<script type="text/javascript" src="/js/app/auth.min.3a112ee4e968812969a92a2bcf87fa524287df92d2bd98a5d622f85a00488d87.js"></script>
+
 
 
 
         <script>
-            
-            const instance = axios.create({
-                baseURL: 'https://auth2fa.fuzzydice.workers.dev/',
-                timeout: 1000,
-                headers: {'X-Custom-Header': 'foobar'}
-            });
+
+            FZD.Auth.setup();
             FZD.domLoaded(function() {
-                console.log("DOM Ready");
-
+                var date = new Date();
+                var dt = date.toDateString();
+                var time = date.toLocaleTimeString();
+                FZD.log("DOM Ready: {0} {1}".format(dt, time));
+                FZD.log("Path:" + window.location.pathname);
+                let page = FZD.getLastPath();
+                FZD.log("page=" + page);
             });
-            
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
         </script>
     </body>
 </html>

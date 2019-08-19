@@ -19,28 +19,17 @@
 
         {{ partial "javascript.html" . }}
         <script>
-            // const axios = require("axios");
-            const instance = axios.create({
-                baseURL: "http://127.0.0.1:5000/",
-                timeout: 1000
-            });
+
             FZD.Auth.setup();
             FZD.domLoaded(function() {
                 var date = new Date();
                 var dt = date.toDateString();
                 var time = date.toLocaleTimeString();
-                console.log("DOM Ready: {0} {1}".format(dt, time));
-                instance.get("/create?acct=888888888XXX")
-                    .then(function (response) {
-                        console.log(response.data);
-                        console.log(response.status);
-                        console.log(response.statusText);
-                        console.log(response.headers);
-                        console.log(response.config);
-                });
-
+                FZD.log("DOM Ready: {0} {1}".format(dt, time));
+                FZD.log("Path:" + window.location.pathname);
+                let page = FZD.getLastPath();
+                FZD.log("page=" + page);
             });
-
         </script>
     </body>
 </html>

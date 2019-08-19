@@ -29,6 +29,20 @@ var FZD = {
         },
             200);
     },
+    // Gets the last segment of the url path
+    getLastPath: function () {
+        var parts = window.location.pathname.split("/");
+        FZD.log("Length:" + parts.length);
+        var page;
+        for (i in parts.reverse()) {
+            FZD.log("Part:" + parts[i]);
+            if (parts[i].length > 0) {
+                page = parts[i];
+                break;
+            }
+        }
+        return page;
+    },
     // get query string value based on key. If not found, returns null
     getQSValue: function (key) {
         var querystring = location.search.replace(/\?/, "");

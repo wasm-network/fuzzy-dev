@@ -24,11 +24,47 @@
     </item>
     
     <item>
+      <title>Scan the QR code</title>
+      <link>/login/scan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/login/scan/</guid>
+      <description>Use Google Authenticator to scan the image below.</description>
+    </item>
+    
+    <item>
+      <title>Setup Metamask</title>
+      <link>/login/metamask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/login/metamask/</guid>
+      <description> Install the Metamask browser extension Create an account or sign in to your Metamask account 3.  </description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>/login/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/login/test/</guid>
+      <description>Use Google Authenticator to scan the image below.</description>
+    </item>
+    
+    <item>
       <title>Contact Us</title>
       <link>/about/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/contact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Verify 2FA</title>
+      <link>/login/verify/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/login/verify/</guid>
       <description></description>
     </item>
     

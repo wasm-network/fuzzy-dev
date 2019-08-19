@@ -7,7 +7,23 @@
   </url>
   
   <url>
+    <loc>/login/scan/</loc>
+  </url>
+  
+  <url>
+    <loc>/login/metamask/</loc>
+  </url>
+  
+  <url>
+    <loc>/login/test/</loc>
+  </url>
+  
+  <url>
     <loc>/about/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>/login/verify/</loc>
   </url>
   
   <url>
@@ -23,6 +39,11 @@
   <url>
     <loc>/help/</loc>
     <lastmod>2018-12-06T09:29:16+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/events/</loc>
+    <lastmod>2018-02-10T10:52:03+07:00</lastmod>
   </url>
   
   <url>
