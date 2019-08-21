@@ -28,10 +28,30 @@
                 <div class="qrcode-box">
 
                 </div>
+                <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;" class="btn btn-primary">Continue</button>
+                <a class="btn btn-primary" href="/login/verify" role="button">Verify</a>
+
+            </div>
+            {{ else if eq .Params.Shortname "Wallet" }}
+            <div class="col-12 wallet">
+                <div class="metamask">
+
+                </div>
                 <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
                     class="btn btn-primary">Continue</button>
             </div>
-            {{ else if eq .Params.Shortname "Web3" }}
+            {{ else if eq .Params.Shortname "Verify" }}
+            <div class="col-12 verify">
+                <div class="form-group">
+                    <label for="pin">Enter the code from Google Authenticator</label>
+                    <input type="pin" class="form-control" id="pin_code" aria-describedby="helpText"
+                        placeholder="6-digit code">
+                    <small id="helpText" class="form-text text-muted">We need this to generate your secret key</small>
+                </div>
+                <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
+                    class="btn btn-primary">Submit</button>
+            </div>
+
             {{ end}}
         </div>
     </article>
@@ -44,10 +64,7 @@
                 RelPermalink: {{ .RelPermalink }}
             </li>
             <li>
-                {{ .Params.Shortname }}
-            </li>
-            <li>
-                {{ .Params.Title }}
+                Shortname: {{ .Params.Shortname }}
             </li>
         </ul>
         {{- with .Params.tags }}

@@ -1,6 +1,6 @@
 ---
-title: 'Setup Metamask'
-shortname: 'Metamask'
+title: 'Setup Metamask Wallet'
+shortname: 'Wallet'
 CTA: 'How to find us'
 draft: false
 featured: true
