@@ -8,6 +8,8 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.15/bootstrap-native-v4.min.js"></script>
 
+<script src="/webpack.js" type="module"></script>
+
 {{ $app := resources.Get "js/app/app.js" }}
 {{ $auth := resources.Get "js/app/auth.js" }}
 {{ if .Site.IsServer }}

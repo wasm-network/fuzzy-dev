@@ -7,7 +7,6 @@ String.prototype.format = function () {
 };
 
 var FZD = {
-    streammap: ['program', 'handheldL', 'follow', 'handheldR'],
     debugOn: true,
     mode: "landing",
     log: function (txt) {
@@ -16,7 +15,6 @@ var FZD = {
             console.log("### " + txt + " ");
         }
     },
-    // Usage: 	KISWE.domLoaded(KISWE.run(x, y));
     domLoaded: function (callback) {
         if (document.addEventListener) {
             document.addEventListener('DOMContentLoaded', callback, false);
