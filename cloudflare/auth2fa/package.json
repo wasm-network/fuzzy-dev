@@ -1,0 +1,28 @@
+{
+    "name": "auth2fa",
+    "version": "1.0.0",
+    "description": "A template for kick starting a Cloudflare Workers project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier --write '**/*.{js,css,json,md}'"
+    },
+    "author": "Hugh Lang <hughlang@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "husky": "^2.1.0",
+        "prettier": "^1.17.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run format",
+            "pre-push": "npm run format"
+        }
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "qr-image": "^3.2.0",
+        "qs": "^6.7.0",
+        "speakeasy": "^2.0.0"
+    }
+}

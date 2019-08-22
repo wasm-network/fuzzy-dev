@@ -10,6 +10,3 @@
 		* To set up Ganache network, add a new RPC server for: HTTP://127.0.0.1:7545
 	
 
-
-
-#### Why is this terrible?
