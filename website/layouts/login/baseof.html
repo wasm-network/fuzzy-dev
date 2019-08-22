@@ -20,7 +20,7 @@
         {{ partial "javascript.html" . }}
         <script>
 
-            FZD.Auth.setup();
+
             FZD.domLoaded(function() {
                 var date = new Date();
                 var dt = date.toDateString();
@@ -29,6 +29,7 @@
                 FZD.log("Path:" + window.location.pathname);
                 let page = FZD.getLastPath();
                 FZD.log("page=" + page);
+                FZD.Auth.setup();
             });
         </script>
     </body>
