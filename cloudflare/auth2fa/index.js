@@ -1,7 +1,7 @@
 import Router from './router';
 import generate from './src/handlers/generate';
 import secret from './src/handlers/create';
-
+import check from './src/handlers/check';
 const speakeasy = require("speakeasy");
 // const qr = require('qr-image')
 
@@ -11,6 +11,7 @@ const speakeasy = require("speakeasy");
  */
 async function handleRequest(request) {
   const r = new Router()
+  r.get('/check', check)
   r.get('/create', secret)
   r.get('/generate', generate)
 
