@@ -22,6 +22,8 @@ The website directory contains files for generating a static website using the H
 			
 ### Where the code is:
 
+Starting in the website directory...
+
 **/layouts/login/**
 This path contains the html fragments used in the login section of the site. The baseof.html page contains the html skeleton of the pages in this section. It has javascript in this path that loads auth.js and determines if the user is logged in with Web3.
 
@@ -40,7 +42,9 @@ This path contains the scss files that are loaded into the sass post processor a
 
 The website also requires access to remote web services via REST apis. When developing on localhost, the browser prevents those calls because they do not conform to the CORS security model. To get around this, we installed mitmproxy following [this guide](https://medium.com/@iaincollins/calling-https-urls-from-http-localhost-8bd4e976edfe) along with other information. 
 
-In the /scripts directory, you can run the `proxy.sh` script to start up mitmproxy using the `cors.py` and `pf.conf` file. Essentially, this forwards all requests on port 5000 to the specified Cloudflare server on workers.dev. This information is subject to change.
+In the /scripts directory, you can run the **`proxy.sh`** script to start up mitmproxy using the `cors.py` and `pf.conf` file. Essentially, this forwards all requests on port 5000 to the specified Cloudflare server on workers.dev. This information is subject to change.
+
+```mitmproxy -s cors.py -p 5000 --mode reverse:https://auth2fa.fuzzydice.workers.dev```
 
 
 ## Running localhost

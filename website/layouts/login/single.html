@@ -23,7 +23,7 @@
             {{ .Content }}
 
             <!-- If /scan page -->
-            {{ if eq .Params.Shortname "Scan" }}
+            {{ if eq .RelPermalink "/login/scan/" }}
             <div class="col-12 scan">
                 <div class="qrcode-box">
 
@@ -32,7 +32,15 @@
                 <a class="btn btn-primary" href="/login/verify" role="button">Verify</a>
 
             </div>
-            {{ else if eq .Params.Shortname "Wallet" }}
+            {{ else if eq .RelPermalink "/login/connect/"  }}
+            <div class="col-12 wallet">
+                <div class="metamask">
+
+                </div>
+                <button id="authSubmitButton" onclick="FZD.Auth.checkMetamask();return false;"
+                    class="btn btn-primary">Connect with Metamask</button>
+            </div>
+            {{ else if eq .RelPermalink "/login/wallet/"  }}
             <div class="col-12 wallet">
                 <div class="metamask">
 
@@ -40,7 +48,7 @@
                 <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
                     class="btn btn-primary">Continue</button>
             </div>
-            {{ else if eq .Params.Shortname "Verify" }}
+            {{ else if eq .RelPermalink "/login/verify/"  }}
             <div class="col-12 verify">
                 <div class="form-group">
                     <label for="pin">Enter the code from Google Authenticator</label>

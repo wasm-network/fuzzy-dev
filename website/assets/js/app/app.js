@@ -33,13 +33,12 @@ var FZD = {
         FZD.log("Length:" + parts.length);
         var page;
         for (i in parts.reverse()) {
-            FZD.log("Part:" + parts[i]);
             if (parts[i].length > 0) {
                 page = parts[i];
                 break;
             }
         }
-        return page;
+        return page.toLowerCase();
     },
     // get query string value based on key. If not found, returns null
     getQSValue: function (key) {

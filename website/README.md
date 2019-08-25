@@ -1,21 +1,13 @@
-# Fuzzy Dev
+# Website
 
-This is a monorepo for various code projects that are part of the IDEO Hackathon. More documentation can be found in the
-/411 directory.
+This website uses the Hugo framework to generate a static HTML site.
 
-## Repo contents
+* See also: [Hugo docs](https://gohugo.io/documentation/)
+* All documentation in this repository can be found in the `411` directory at the root level.
 
-* 411 – This contains various markdown files with documentation
-* docs – Ironically, this is not the docs directory. It is the generated html that gets served by Netlify or Github Pages
-* fuzzy-web
-    * website: Code for a Hugo-based website that is statically generated with webpack build integration to import Web3
-    * scripts: Includes a script for running mitmproxy for localhost development to get around cross-domain security
-      rules
-* cloudflare
-    * auth2fa: A cloudflare workers project using javascript/webpack to deploy to Cloudflare
-    * sims: Coming soon
+## Usage
 
+For developers, you can run the site from the command line with the following:
 
-### Other docs:
+```$ hugo server```
 
-* Tech diagrams: https://hackmd.io/U_D0ZzpFQPKl7FrD-bGneQ

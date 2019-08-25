@@ -28,7 +28,19 @@
                 FZD.log("Path:" + window.location.pathname);
                 let page = FZD.getLastPath();
                 FZD.log("page=" + page);
-                FZD.Auth.setup();
+                switch (page) {
+                    case "connect":
+                        FZD.log("Display checklist");
+                        break;
+                    case "metamask":
+                        FZD.log("Show instructions");
+                        break;
+                    default:
+                        FZD.Auth.setup();
+                }
+                if (page == "connect") {
+                } else {
+                }
             });
         </script>
     </body>

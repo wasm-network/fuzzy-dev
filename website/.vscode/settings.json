@@ -3,5 +3,11 @@
         "docs": true,
         "resources": true
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#ECF02F",
+        "activityBar.background": "#5C0C22",
+        "titleBar.activeBackground": "#811130",
+        "titleBar.activeForeground": "#FFFBFC"
+    }
 }
