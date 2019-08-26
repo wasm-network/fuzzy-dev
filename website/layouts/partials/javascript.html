@@ -11,7 +11,7 @@
 <script src="/webpack.js" type="module"></script>
 
 {{ $app := resources.Get "js/app/app.js" }}
-{{ $auth := resources.Get "js/app/auth.js" }}
+{{ $auth := resources.Get "js/app/login.js" }}
 {{ if .Site.IsServer }}
 <script type="text/javascript" src="{{ $app.RelPermalink }}"></script>
 <script type="text/javascript" src="{{ $auth.RelPermalink }}"></script>

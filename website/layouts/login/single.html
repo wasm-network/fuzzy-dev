@@ -19,34 +19,108 @@
         <img src="/img/{{ . }}" class="post-cover" />
         {{ end }}
 
-        <div class="post-content">
+        <div class="post-content container">
             {{ .Content }}
 
-            <!-- If /scan page -->
-            {{ if eq .RelPermalink "/login/scan/" }}
-            <div class="col-12 scan">
+            {{ if eq .RelPermalink "/login/test/" }}
+            <!-- Test page: Unused -->
+            <div class="col-12 test">
                 <div class="qrcode-box">
-
-                </div>
-                <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;" class="btn btn-primary">Continue</button>
-                <a class="btn btn-primary" href="/login/verify" role="button">Verify</a>
-
-            </div>
-            {{ else if eq .RelPermalink "/login/connect/"  }}
-            <div class="col-12 wallet">
-                <div class="metamask">
-
-                </div>
-                <button id="authSubmitButton" onclick="FZD.Auth.checkMetamask();return false;"
-                    class="btn btn-primary">Connect with Metamask</button>
-            </div>
-            {{ else if eq .RelPermalink "/login/wallet/"  }}
-            <div class="col-12 wallet">
-                <div class="metamask">
 
                 </div>
                 <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
                     class="btn btn-primary">Continue</button>
+                <a class="btn btn-primary" href="/login/verify" role="button">Verify</a>
+
+            </div>
+            {{ else if eq .RelPermalink "/login/connect/" }}
+            <!-- Connect page shows checklist of steps to connect -->
+            <div class="col-12 connect">
+                <div class="row header">
+                    <div class="col-1">
+                        #
+                    </div>
+                    <div class="col-9">
+                        Description
+                    </div>
+                    <div class="col-2">
+                        Check
+                    </div>
+                </div>
+                <!-- 1 -->
+                <div class="row checklist">
+                    <div class="col-1 num">
+                        1.
+                    </div>
+                    <div class="col-9 desc">
+                        Install Metamask
+                    </div>
+                    <div class="col-2 action">
+                        <button>DONE!</button>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="row checklist">
+                    <div class="col-1 num">
+                        2.
+                    </div>
+                    <div class="col-9 desc">
+                        Connect your account
+                    </div>
+                    <div class="col-2 action">
+                        <button>DONE!</button>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="row checklist">
+                    <div class="col-1 num">
+                        3.
+                    </div>
+                    <div class="col-9 desc">
+                        Connect Google Authenticator
+                    </div>
+                    <div class="col-2 action">
+                        <a class="btn btn-primary" href="/login/scan" role="button">Connect</a>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-sm">
+                        <button id="authSubmitButton" onclick="FZD.Auth.checkMetamask();return false;"
+                            class="btn btn-primary">Continue</button>
+
+                    </div>
+                </div> -->
+            </div>
+            {{ else if eq .RelPermalink "/login/metamask/"  }}
+            <div class="col-12 metamask">
+                <div class="generic">
+
+                </div>
+                <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
+                    class="btn btn-primary">Continue</button>
+            </div>
+            {{ else if eq .RelPermalink "/login/scan/" }}
+            <div id="no-scan" class="col-12 scan" style="display:none;">
+                <div class="row checklist">
+                    <div class="col-9 desc">
+                        <p>There is something wrong with your connection. No Ethereum address found.
+                            Click on the Back button to return to the Connect screen.
+                        </p>
+                    </div>
+                    <div class="col-3 action">
+                        <a class="btn btn-primary" href="/login/connect" role="button">Back</a>
+                    </div>
+                </div>
+            </div>
+            <div id="scan-panel" class="col-12 scan" style="display:none;">
+                <div class="qrcode-box">
+
+                </div>
+                <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;"
+                    class="btn btn-primary">Continue</button>
+                <a class="btn btn-primary" href="/login/verify" role="button">Verify</a>
+
             </div>
             {{ else if eq .RelPermalink "/login/verify/"  }}
             <div class="col-12 verify">

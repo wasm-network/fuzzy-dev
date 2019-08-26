@@ -6,8 +6,8 @@
     "git.ignoreLimitWarning": true,
     "workbench.colorCustomizations": {
         "editor.lineHighlightBackground": "#ECF02F",
-        "activityBar.background": "#5C0C22",
-        "titleBar.activeBackground": "#811130",
+        "activityBar.background": "#2956d4bb",
+        "titleBar.activeBackground": "#3c5addd5",
         "titleBar.activeForeground": "#FFFBFC"
     }
 }

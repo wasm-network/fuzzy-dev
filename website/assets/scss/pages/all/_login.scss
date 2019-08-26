@@ -14,3 +14,16 @@
 
 }
 
+.connect {
+	.checklist {
+		width: 100%;
+		.header {
+			font-weight: bold;
+			text-align: center;
+		}
+		.num {
+			text-align: center;
+			// background: rgb(66, 13, 13);
+		}
+	}
+}

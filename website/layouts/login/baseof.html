@@ -35,6 +35,9 @@
                     case "metamask":
                         FZD.log("Show instructions");
                         break;
+                    case "scan":
+                        FZD.Auth.fetchQR();
+                        break;
                     default:
                         FZD.Auth.setup();
                 }
