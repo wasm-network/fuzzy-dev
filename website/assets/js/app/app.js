@@ -12,7 +12,7 @@ var FZD = {
     log: function (txt) {
         if (!this.debugOn) return;
         if (typeof (console) !== "undefined") {
-            console.log("### " + txt + " ");
+            console.log(">> " + txt);
         }
     },
     domLoaded: function (callback) {
@@ -85,6 +85,9 @@ var FZD = {
             }
         }
         return (arrReturnElements)
-    }
+    },
+    // modifyButton: function(el, rename, addclass, removeclass) {
+
+    // },
 };
 

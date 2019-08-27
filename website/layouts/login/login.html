@@ -10,7 +10,10 @@
         <div class="container pt-12 generic">
             <div class="row">
                 <div class="col-12">
-                    <form>
+                        {{ .Content }}
+
+                        <a class="btn btn-primary" href="/login/connect" role="button">Connect</a>
+                    <!-- <form>
                         <div class="form-group">
                             <label for="Address">ETH address</label>
                             <input type="address" class="form-control" id="ethAddress"
@@ -18,7 +21,7 @@
                             <small id="helpText" class="form-text text-muted">We need this to generate your secret key</small>
                         </div>
                         <button id="authSubmitButton" onclick="FZD.Auth.submit();return false;" class="btn btn-primary">Submit</button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>

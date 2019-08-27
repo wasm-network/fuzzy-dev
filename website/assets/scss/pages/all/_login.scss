@@ -17,13 +17,18 @@
 .connect {
 	.checklist {
 		width: 100%;
+		min-height: 60px;
 		.header {
 			font-weight: bold;
 			text-align: center;
 		}
 		.num {
+			font-weight: bold;
 			text-align: center;
-			// background: rgb(66, 13, 13);
 		}
+		.btn {
+			width: 100px;
+		}
+
 	}
 }

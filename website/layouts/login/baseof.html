@@ -24,25 +24,25 @@
                 var date = new Date();
                 var dt = date.toDateString();
                 var time = date.toLocaleTimeString();
-                FZD.log("DOM Ready: {0} {1}".format(dt, time));
-                FZD.log("Path:" + window.location.pathname);
                 let page = FZD.getLastPath();
-                FZD.log("page=" + page);
+                FZD.log("Loaded page [{0}] at {1} {2}".format(page, dt, time));
                 switch (page) {
+                    case "login":
+                        // This is the base /login page
+                        // TODO: Check if already logged in and alter page
+                        break;
                     case "connect":
-                        FZD.log("Display checklist");
+                        // FZD.log("Display checklist");
+                        FZD.Auth.connect_page();
                         break;
                     case "metamask":
-                        FZD.log("Show instructions");
+                        // FZD.log("Show instructions");
                         break;
                     case "scan":
-                        FZD.Auth.fetchQR();
+                        FZD.Auth.scan_page();
                         break;
                     default:
                         FZD.Auth.setup();
-                }
-                if (page == "connect") {
-                } else {
                 }
             });
         </script>
