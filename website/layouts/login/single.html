@@ -36,17 +36,6 @@
             {{ else if eq .RelPermalink "/login/connect/" }}
             <!-- Connect page shows checklist of steps to connect -->
             <div class="col-12 connect">
-                <div class="row header">
-                    <div class="col-1">
-                        #
-                    </div>
-                    <div class="col-9">
-                        Description
-                    </div>
-                    <div class="col-2">
-                        Check
-                    </div>
-                </div>
                 <!-- 1 -->
                 <div class="row checklist">
                     <div class="col-1 num">
@@ -56,8 +45,8 @@
                         Install Metamask
                     </div>
                     <div class="col-2 action">
-                        <a id="connect-btn1" class="btn btn-primary d-none" href="/login/metamask" role="button">Install</a>
-                        <a id="connect-btn1-ok" class="btn btn-secondary d-none" href="" role="button">Done!</a>
+                        <a id="connect-btn1" class="btn btn-primary" href="/login/metamask" role="button">Install</a>
+                        <a id="connect-btn1-ok" class="btn btn-secondary" href="" role="button">Done!</a>
                     </div>
                 </div>
                 <!-- 2 -->
@@ -69,10 +58,9 @@
                         Unlock Metamask
                     </div>
                     <div class="col-2 action">
-                            <a id="connect-btn2" class="btn btn-primary d-none" href="/login/metamask"
-                            role="button">Show me</a>
-                            <a id="connect-btn2-ok" class="btn btn-secondary d-none" href="" role="button">Done!</a>
-                        </div>
+                        <a id="connect-btn2" class="btn btn-primary" href="/login/metamask" role="button">Connect</a>
+                        <a id="connect-btn2-ok" class="btn btn-secondary" href="" role="button">Done!</a>
+                    </div>
                 </div>
                 <!-- 3 -->
                 <div class="row checklist">
@@ -83,8 +71,8 @@
                         Connect Google Authenticator
                     </div>
                     <div class="col-2 action">
-                        <a id="connect-btn3" class="btn btn-primary d-none" href="/login/scan" role="button">Scan QR</a>
-                        <a id="connect-btn3-ok" class="btn btn-secondary d-none" href="" role="button">Done!</a>
+                        <a id="connect-btn3" class="btn btn-primary" href="/login/scan" role="button">Scan QR</a>
+                        <a id="connect-btn3-ok" class="btn btn-secondary" href="" role="button">Done!</a>
                     </div>
                 </div>
 

@@ -6,7 +6,6 @@
 * Theme from: https://github.com/panr/hugo-theme-hello-friend
 
 
-
 ## website directory
 
 The website directory contains files for generating a static website using the Hugo framework. 

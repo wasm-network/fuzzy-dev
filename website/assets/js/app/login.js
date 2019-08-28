@@ -6,77 +6,68 @@ FZD.Auth = {
         baseURL: "http://127.0.0.1:5000/",
         timeout: 1000
     }),
-    /// Call this function after Web3 account is acquired (Metamask is logged in)
-    checkAccount: function(addr) {
-        FZD.Auth.authAPI.get("/check?id=" + addr)
-        .then(function (response) {
-            FZD.log("Result: " + response.data.result);
-            let result = response.data.result;
-            if (result) {
-                FZD.log("Hey you have an account already!");
-                let data = response.data.data;
-                if (data != null) {
-                    FZD.log("You have data. Let's use it");
-                    window.location = "/home";
+    checkWeb3: function(callback) {
+        const provider = window.web3.currentProvider;
+        const web3 = new Web3(provider);
+        var ok1 = false;
+        var ok2 = false;
+        var ok3 = false;
+
+        if (typeof (web3) === "undefined") {
+            FZD.log("web3 is undefined. Metamask not installed?");
+        }
+        ok1 = true;
+        if (ok1) {
+            web3.eth.getAccounts(function(err,res) {
+                if (!err) {
+                    var address = res;
+                    FZD.log("ETH address: " + res);
+                    if (address.length > 0) {
+                        FZD.Auth.eth_address = address;
+                        ok2 = true;
+                        if (ok2) {
+
+                            FZD.Auth.authAPI.get("/check?id=" + FZD.Auth.eth_address)
+                            .then(function (response) {
+                                FZD.log("Result: " + response.data.result);
+                                let result = response.data.result;
+                                if (result) {
+                                    FZD.log("Hey you have an account already!");
+                                    ok3 = true;
+                                    callback(ok1, ok2, ok3);
+                                } else {
+                                    FZD.log("You don't have an account.");
+                                }
+                            });
+                        } else {
+                            FZD.log("No account. Redirect to connect");
+                            callback(ok1, ok2, ok3);
+                        }
+                    } else {
+                        FZD.log("ERROR: {0}".format(err));
+                        callback(ok1, ok2, ok3);
+                    }
+                } else {
+                    callback(ok1, ok2, ok3);
                 }
-            } else {
-                FZD.log("You don't have an account.");
-                window.location = "/login/connect";
-            }
-        });
+           });
+        }
     },
     /// Called when connect page is loaded
     connect_page: function() {
-        const provider = window.web3.currentProvider;
-        const web3 = new Web3(provider);
-        if (typeof (web3) === "undefined") {
-            FZD.log("web3 is undefined. Metamask not installed?");
-            return;
-        }
-        document.getElementById("connect-btn1").classList.add("d-none");
-        document.getElementById("connect-btn1-ok").classList.remove("d-none");
+        this.checkWeb3(function(ok1, ok2, ok3) {
+            FZD.log("ok1={0} / ok2={1} / ok3={2}".format(ok1, ok2, ok3));
+            // document.getElementById("connect-btn1").style.display = "none";
+            // document.getElementById("connect-btn1-ok").style.display = "block";
+
+            // document.getElementById("connect-btn2").style.display = "none";
+            // document.getElementById("connect-btn2-ok").style.display = "block";
+
+        });
 
         // const accounts = await web3.eth.getAccounts();
-        web3.eth.getAccounts(function(err,res){
-            if (!err) {
-                var address = res;
-                FZD.log("ETH address: " + res);
-                FZD.Auth.eth_address = address;
-                if (address.length == 0) {
-                    // Metamask installed but not logged in.
-                    document.getElementById("connect-btn2").classList.remove("d-none");
-                    document.getElementById("connect-btn3-ok").classList.remove("d-none");
-                } else {
-                    document.getElementById("connect-btn2-ok").classList.remove("d-none");
-                    document.getElementById("connect-btn3").classList.remove("btn-secondary");
-                    // document.getElementById("connect-btn3").classList.add("btn-secondary");
-                }
-                FZD.Auth.authAPI.get("/check?id=" + addr)
-                .then(function (response) {
-                    FZD.log("Result: " + response.data.result);
-                    let result = response.data.result;
-                    if (result) {
-                        FZD.log("Hey you have an account already!");
-                        let data = response.data.data;
-                        if (data != null) {
-                            document.getElementById("connect-btn3-ok").classList.remove("d-none");
-                            FZD.log("You have data. Let's use it");
-                            // Redirect to /home
-                        }
-                    } else {
-                        FZD.log("You don't have an account.");
-                        document.getElementById("connect-btn3").classList.remove("d-none");
-                        // document.getElementById("connect-btn3-ok").classList.remove("d-none");
-
-                    }
-                });
-
-            } else {
-                FZD.log("No account. Redirect to connect");
-
-            }
-       });
     },
+
     /// Called when metamask page is loaded
     metamask_page: function(addr) {
         window.location = "/login/metamask";
