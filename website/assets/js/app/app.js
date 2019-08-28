@@ -30,7 +30,6 @@ var FZD = {
     // Gets the last segment of the url path
     getLastPath: function () {
         var parts = window.location.pathname.split("/");
-        FZD.log("Length:" + parts.length);
         var page;
         for (i in parts.reverse()) {
             if (parts[i].length > 0) {
