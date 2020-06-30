@@ -1,18 +1,22 @@
 /// Javascript for login page
 FZD.Auth = {
     status: "",
+    web3: new Web3(),
     eth_address: "",
+    workers_api: "http://127.0.0.1:5000",
+    init: function() {
+        const provider = new Web3.providers.HttpProvider("http://localhost:7545");
+        this.web3 = new Web3(provider);
+    },
     authAPI: axios.create({
         baseURL: "http://127.0.0.1:5000/",
         timeout: 1000
     }),
     checkWeb3: function (callback) {
-        const provider = window.web3.currentProvider;
+        // const provider = window.web3.currentProvider;
+        const provider = new Web3.providers.HttpProvider("http://localhost:7545");
         const web3 = new Web3(provider);
-        // export const web3 = new Web3(window.web3.currentProvider);
-        // FZD.log(provider);
-        // var web3 = new Web3(Web3.givenProvider || "ws://localhost:7545");
-        // web3.setProvider('ws://localhost:7545');
+
         var ok1 = false;
         var ok2 = false;
         var ok3 = false;
@@ -24,29 +28,35 @@ FZD.Auth = {
         }
         ok1 = true;
         if (ok1) {
-            // web3.eth.getAccounts().then(console.log);
             web3.eth.getAccounts(console.log);
-            web3.eth.getAccounts(function (res) {
-                FZD.log("ETH address: " + res);
-                if (res != null) {
-                    var address = res;
-                    FZD.Auth.eth_address = address;
-                    ok2 = true;
-                    FZD.Auth.authAPI.get("/check?id=" + FZD.Auth.eth_address)
-                        .then(function (response) {
-                            FZD.log("Result: " + response.data.result);
-                            let result = response.data.result;
-                            if (result) {
-                                FZD.log("Hey you have an account already!");
-                                ok3 = true;
-                                callback(ok1, ok2, ok3);
-                            } else {
-                                FZD.log("You don't have an account.");
-                            }
-                        });
+            web3.eth.getAccounts(function (err, res) {
+                if (!err) {
+                    if (res !== undefined) {
+                        FZD.log(res);
+                        var address = res;
+                        FZD.Auth.eth_address = address[0];
+                        FZD.log("ETH address: " + FZD.Auth.eth_address);
+                        ok2 = true;
+                        FZD.Auth.authAPI.get("/check?id=" + FZD.Auth.eth_address)
+                            .then(function (response) {
+                                FZD.log("Result: " + response.data.result);
+                                let result = response.data.result;
+                                if (result) {
+                                    FZD.log("Hey you have an account already!");
+                                    ok3 = true;
+                                    callback(ok1, ok2, ok3);
+                                } else {
+                                    FZD.log("You don't have an account.");
+                                    callback(ok1, ok2, ok3);
+                                }
+                            });
+                    } else {
+                        FZD.log("Address not found");
+                        callback(ok1, ok2, ok3);
+                    }
                 } else {
-                    FZD.log("Address not found");
-                    callback(ok1, ok2, ok3);
+                    FZD.log("ERROR: " + err);
+                    callback(false, false, false);
                 }
             });
         }
@@ -79,29 +89,28 @@ FZD.Auth = {
     /// Called when scan page is loaded.
     /// User eth_address must be acquired already
     scan_page: function () {
-        if (FZD.Auth.eth_address.length == 0) {
-            FZD.log("Eth address not set. Redirect to connect page");
-            document.getElementById("scan-panel").style.display = "none";
-            document.getElementById("no-scan").style.display = "block";
-            // window.location = "/login/connect";
-        } else {
-            FZD.Auth.authAPI.get("/generate?id=" + FZD.Auth.eth_address)
-                .then(function (response) {
-                    // FZD.log("Result: " + response.data.result);
-                    // let result = response.data.result;
-                    // if (result) {
-                    //     FZD.log("Hey you have an account already!");
-                    //     let data = response.data.data;
-                    //     if (data != null) {
-                    //         FZD.log("You have data. Let's use it");
-                    //         window.location = "/home";
-                    //     }
-                    // } else {
-                    //     FZD.log("You don't have an account.");
-                    //     window.location = "/login/connect";
-                    // }
-                });
-        }
+        this.init();
+        this.web3.eth.getAccounts(function (err, res) {
+            if (!err && res !== undefined) {
+                if (res.length == 0) {
+                    FZD.log("Eth address not set. Redirect to connect page");
+                    document.getElementById("scan-panel").style.display = "none";
+                    document.getElementById("no-scan").style.display = "block";
+                    // window.location = "/login/connect";
+                } else {
+                    var address = res;
+                    FZD.Auth.eth_address = address[0];
+                    FZD.log("ETH address: " + FZD.Auth.eth_address);
+                    var image_url = FZD.Auth.workers_api + "/generate?id=" + FZD.Auth.eth_address;
+                    document.getElementById("qrcode").src = image_url;
+                    document.getElementById("scan-panel").style.display = "block";
+                    document.getElementById("no-scan").style.display = "none";
+                }
+
+            } else {
+                FZD.log("Address not found");
+            }
+        });
     },
     setup: function () {
         FZD.log("setup");
